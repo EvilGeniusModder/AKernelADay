@@ -43,7 +43,7 @@ Take a flash drive or other kind of storage media and perfom the following:
         mknod -m 666 /mnt/GenericOS/dev/null c 1 3
        Creates the device files needed for linux.
 
-    5. COPY over the kernel from your Ubuntu OS onto the storage media in the /mnt/GenericOS/boot directory, look for a vmlinux-{version} file, then look for a file named initrd.img-{version}; Where version matches the version of the vmlinuz file.
+    5. COPY over the kernel from your Ubuntu OS (located at /boot) onto the storage media in the /mnt/GenericOS/boot directory, look for a vmlinux-{version} file, then look for a file named initrd.img-{version}; Where version matches the version of the vmlinuz file.
 
     6. Use the command "grub-install /dev/{MEDIA} --skip-fs-probe --boot-directory=/mnt/GenericOS/boot". This command uses your root filesystem device file representing the storage medias hardware, for example if your storage media is /dev/sdb0 then use that.
 
@@ -63,7 +63,7 @@ Take a flash drive or other kind of storage media and perfom the following:
             boot
         }
 
-    10. DONE, we now should have a fully bootable kernel. However, this kernel does not include an Operating System just yet. Upon booting the kernel we should either see an error or the kernel will crash. This is because the kernel has done its part and is now attempting to pass the baton over but no one is there to take it.
+    10. DONE, we now should have a fully bootable kernel. However, this kernel does not include an Operating System just yet. Upon booting the kernel, we should either see an error or the kernel will crash. This is because the kernel has done its part and is now attempting to pass the baton over but no one is there to take it.
 
 ## Day 1: Research - Who takes over after the kernel and what do they do?
 
