@@ -11,6 +11,8 @@ FLAGS ?= -nostdlib -I${INCLUDE}
 PREFIX ?= ${DESTDIR}
 BINDIR ?= ${PREFIX}/sbin
 
+INSTALL_TARGET ?= TARGET
+
 # Include our crt0.o file if necessary
 ifdef __CRT0__
 OBJECTS += ../crt0.o
@@ -29,7 +31,7 @@ Source/crt0.o:
 
 #Installs our program into its destination directory.
 install:
-	cp ${TARGET} ${BINDIR}/
+	cp ${TARGET} ${BINDIR}/${INSTALL_TARGET}
 
 # Fully cleans our our sbin and lib directories.
 fullclean: 

@@ -1,5 +1,6 @@
 # Tell the system what program name we are going to compile to.
-TARGET=init
+TARGET=init.o
+INSTALL_TARGET=init
 
 # Ask the shell to gather up all c files for us, then add to list.
 CSOURCES = ${shell echo *.c}
