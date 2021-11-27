@@ -3,7 +3,10 @@ TARGET=init
 
 # Ask the shell to gather up all c files for us, then add to list.
 CSOURCES = ${shell echo *.c}
-OBJECTS = ${CSOURCES:%.c=build/%_c.o}
+SSOURCES = ${shell echo *.s}
+OBJECTS = ${CSOURCES:%.c=Build/%_c.o}
+OBJECTS += ${SSOURCES:%.s=Build/%_s.o}
+
 
 # Tell base.mk we will need the ctr0 object file to be linked in.
 __CRT0__ := true

@@ -91,9 +91,11 @@ Counter question, who likes PIE? Not the edible kind but the programming kind. P
 
 This concept is really useful for security purposes but causes one of two things, the need for the _start function (not the only reason but one of the major reasons) and the need for a /lib/ld-linux.so library. Once we start programming the OS we will need to copy over the existing ld-linux library from our Ubuntu install to allow for the dynamic linking of other libraries. Take some time to look through our Makefile's to see how linking and other concepts are tackled. I added in the crt0 and "Init" subproject ahead of schedule so that the initial idea could be cemented before worring about syscalls.
 
+## Day 3: Initial Coding - Implementing system calls with crt0 and main.
+Today we implemented the system call wrapper function. This function takes in C arguments and moves them into the appropriate registers for a system call and calls the syscall instruction before returning. Some system calls return a value other's don't, some set errno and some don't. Two system calls were implemented: exit and write. Exit was implemented to satisfy the _start function which requires the exit function. Write was implemented so that we could write to the screen buffer. Our Init program was finally put to use and now displays a header and the words "Hello World". The main function for init was fixed to remove the two parameters: argc and argv. Both cannot/shouldn't be used as the kernel is invoking init and possibly does not pass valid values (I have not checked that but both arguments are useless to us in init's case either way). Finally I "fixed" some Makefiles but will be altering the Makefile structure and implementation at Day 6 because I am unhappy with how its currently formatted. 
+
 # Schedule/Backlog
 
-## Day 3: Initial Coding - Implementing system calls with crt0 and main.
 ## Day 4: Coding - Libraries and migrating system calls.
 ## Day 5: Coding - Example programs (display, networking, and filesystem).
 ## Day 6: Refactor - Summarise what we have learned and improve code.

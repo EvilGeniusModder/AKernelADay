@@ -1,9 +1,12 @@
 # Set our utility variables if not already set.
 SHELL ?= /bin/sh
 CC ?= gcc
-FLAGS ?= -nostdlib -I../../include
+
 OS_PATH ?= /mnt/GenericOS
 DESTDIR ?= /mnt/GenericOS
+
+INCLUDE ?= ${DESTDIR}/AKernelADay/Include
+FLAGS ?= -nostdlib -I${INCLUDE}
 
 PREFIX ?= ${DESTDIR}
 BINDIR ?= ${PREFIX}/sbin
@@ -21,8 +24,8 @@ Build/%_s.o: %.s
 	${CC} ${FLAGS} -c $< -o $@
 
 # Build our crt0 into object code.
-crt0.o: crt0.s
-	${CC} ${FLAGS} -c crt0.s -o crt0.o
+Source/crt0.o:
+	${CC} ${FLAGS} -c Source/crt0.s -o Source/crt0.o
 
 #Installs our program into its destination directory.
 install:

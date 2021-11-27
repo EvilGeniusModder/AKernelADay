@@ -50,3 +50,7 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Custom remove build directories, none of them are necessary so get rid of them.
+/Source/*/Build/
+/Source/*/Build/*
